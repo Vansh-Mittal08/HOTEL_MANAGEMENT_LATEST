@@ -1,0 +1,130 @@
+/* Ensure Admin Dashboard starts below the Navbar */
+.admin-dashboard-container {
+  display: flex;
+  background-color: #121212;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+  width: 250px;
+  background: #121212;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 70px; /* Ensures it starts below navbar */
+  overflow-y: auto;
+  border-right: 1px solid #333;
+}
+
+/* Main Dashboard Content */
+.admin-dashboard {
+  margin-left: 250px; /* Push content to the right of sidebar */
+  padding: 20px;
+  width: calc(100% - 250px);
+  background: #181818;
+  color: white;
+  min-height: 100vh;
+}
+
+/* Dashboard Cards - Grid Layout */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Individual Cards */
+.card {
+  background: #1e1e1e;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: left; /* Align content to the left */
+  font-family: 'Poppins', sans-serif; /* Apply specific font */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+}
+
+/* Hover Effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Card Title */
+.card h3 {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-weight: 500; /* Medium weight */
+}
+
+/* Card Number Value */
+.card p {
+  font-size: 32px;  /* Bigger number */
+  font-weight: bold;
+  color: white;
+}
+
+/* Chart Section */
+.chart-container {
+  margin-top: 40px;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #333;
+  max-height: 400px;  /* Reduced height */
+  overflow: hidden;  /* Prevents any overflow */
+}
+
+
+/* Button Styling */
+button {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 0;
+  }
+
+  .admin-dashboard {
+      margin-left: 0;
+      width: 100%;
+      padding: 15px;
+  }
+
+  .dashboard-cards {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-cards {
+      grid-template-columns: 1fr;
+  }
+
+  .card {
+      width: 100%;
+  }
+}

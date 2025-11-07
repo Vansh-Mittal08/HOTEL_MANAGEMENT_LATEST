@@ -1,0 +1,224 @@
+/* Import Google Font for Unique Look */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500;700&display=swap');
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+  padding: 15px 50px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Navbar Scroll Effect */
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+}
+.black-navbar {
+  background: rgb(43, 43, 45) !important;
+}
+.admin-navbar {
+  background: black !important;
+}
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.8) !important; 
+}
+
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo img {
+  height: 80px; /* Increased logo size */
+  width: auto;
+}
+
+/* Center Navbar Content */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Navbar Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Increased spacing between items */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+/* Unique Font & Elegant Look */
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px; /* Increased font size */
+  font-weight: 500;
+  font-family: "Playfair Display", serif; /* Unique Font */
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 10px 0;
+}
+
+/* Hover Underline */
+.nav-links a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #f1c40f;
+}
+
+/* Dropdown Icons */
+.nav-links li > a::after {
+  content: " ▾";
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* Hide dropdown icon for Login/Join & Book button */
+.nav-links li:last-child > a::after,
+.nav-links li:nth-last-child(2) > a::after {
+  content: "";
+}
+
+/* Book Button */
+.book-btn {
+  background-color: #c29d5c;
+  color: white;
+  font-weight: bold;
+  font-size: 20px; /* Increased button font size */
+  padding: 14px 24px; /* Larger button */
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif; /* Unique Font for Button */
+}
+
+.book-btn:hover {
+  background-color: #a5824b;
+}
+.user-name {
+  text-decoration: none;
+  color: white; /* Matches navbar link color */
+  font-size: 22px; /* Matches navbar font size */
+  font-weight: 900;
+  font-family: "Playfair Display", serif; /* Matches navbar font */
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 10px 0;
+}
+.user-name::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.user-name:hover::after {
+  width: 100%;
+}
+
+.user-name:hover {
+  color: #f1c40f; /* Matches hover effect of navbar links */
+}
+
+/* Logout Button - Matches Navbar Styling */
+/* Logout Button - Styled Like Navbar Links */
+.logout-btn {
+  background: none; /* Remove button background */
+  border: none; /* Remove button border */
+  color: white; /* Matches navbar link color */
+  font-size: 20px; /* Matches navbar font size */
+  font-weight: 500;
+  font-family: "Playfair Display", serif; /* Matches navbar font */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 10px 0;
+}
+
+/* Hover Effect - Same as Navbar Links */
+.logout-btn::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.logout-btn:hover::after {
+  width: 100%;
+}
+
+.logout-btn:hover {
+  color: #f1c40f; /* Matches hover effect of navbar links */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+
+  .book-btn {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+
+  .logo img {
+    height: 70px; /* Adjust logo size for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .logo img {
+    height: 60px; /* Adjust logo size for mobile */
+  }
+}

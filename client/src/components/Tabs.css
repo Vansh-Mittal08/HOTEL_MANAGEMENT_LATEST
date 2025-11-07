@@ -1,0 +1,38 @@
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f6f4;
+    padding: 8px;
+    border-radius: 50px;
+    width: 50%;
+    margin: 15px auto;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+    display: flex; /* Align items properly */
+    align-items: center;
+    justify-content: flex-start; /* Align text to the left */
+    padding: 10px 18px;
+    font-family: "Georgia", serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #5a5a5a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left; /* Ensures left alignment */
+    width: 80%; /* Takes full width of its container */
+}
+
+.tab:hover {
+    color: #8c6b2e;
+}
+
+#active-tab {
+    background: white;
+    color: #b68b2f;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

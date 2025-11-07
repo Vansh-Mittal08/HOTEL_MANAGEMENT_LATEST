@@ -1,0 +1,213 @@
+/* =======================
+   GLOBAL PAGE BACKGROUND
+   ======================= */
+html,
+body {
+    background: #ffffff !important;  /* Full-page white background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Keep wrappers white, but don't touch the header */
+.wrapper,
+.page-wrapper,
+.main-wrapper,
+.site,
+#app,
+#root {
+    background: #ffffff !important;
+}
+
+/* ❌ REMOVE header/nav overrides – let their own styles show */
+
+/* Make sure all direct children of body (except header) are white */
+body > *:not(header):not(.site-header):not(.main-header) {
+    background: #ffffff !important;
+}
+
+/* =======================
+   ORIGINAL STYLES
+   ======================= */
+
+.room-list {
+    width: 60%;
+    margin: auto;
+    font-family: "Georgia", serif;
+    color: #3d2e1e;
+    margin-top: 20px;
+}
+
+.room-info {
+    max-height: 100vh;         /* Limit height to viewport */
+    overflow-y: auto;          /* Enable vertical scrolling */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.room-card {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 16px;
+    background: #fff;
+    box-shadow: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    align-items: center;
+    margin-left: 20px;
+    gap: 20px;
+}
+
+.room-left {
+    width: 30%;
+}
+
+.room-image-container {
+    width: 100%;
+    position: relative;
+}
+
+.room-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.search-title {
+    font-weight: 100;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+}
+
+.room-details {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #5a5a5a;
+    display: flex;
+    gap: 12px;
+    text-transform: capitalize;
+    align-items: center;
+}
+
+.room-details-link {
+    font-family: "Poppins", sans-serif;
+    font-weight: normal !important;
+    font-size: 14px;
+    color: #2e2e2e;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.room-details span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.room-right {
+    width: 70%;
+}
+
+.room-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #897865;
+    font-weight: 100 !important;
+}
+
+.pricing-box {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-top: 12px;
+    border-radius: 5px;
+}
+
+.pricing-details-container {
+    width: 60%;
+}
+
+.pricing-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #696969;
+}
+
+.pricing-details {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    color: #696969;
+    line-height: 1.6;
+}
+
+.pricing-details li {
+    text-transform: capitalize;
+}
+
+.price-options {
+    width: 40%;
+    text-align: center;
+    border-left: 1px solid #ddd;
+    padding-left: 12px;
+}
+
+.member-price h2,
+.standard-price h2 {
+    font-size: 18px;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+    font-weight: 100 !important;
+}
+
+.member-price {
+    font-size: 14px;
+    color: #8c6b2e;
+    font-weight: bold !important;
+}
+
+.standard-price {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal !important;
+}
+
+.login-btn,
+.select-btn {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: #b68b2f;
+    color: white;
+    border: none;
+}
+
+.select-btn {
+    background: #ffffff;
+    color: #b68b2f;
+    border: 1px solid #b68b2f;
+}
+
+.select-btn:hover {
+    background: #efebe4;
+}
+
+.login-btn:hover {
+    background: #9e7427;
+}
+
+.taxes-checkbox {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 14px !important;
+    color: #5a5a5a !important;
+}

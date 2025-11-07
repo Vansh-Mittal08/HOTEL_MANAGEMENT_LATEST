@@ -1,0 +1,348 @@
+/* Import Elegant Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Full Page Container */
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* --------- Video Section --------- */
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Home Content */
+.home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  color: #FFFFFF;
+}
+
+.home-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.home-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+/* --------- Booking Section --------- */
+.booking-section {
+  padding: 80px 5%;
+  background-color: #0A0A0A;
+  text-align: left;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #C6A355;
+  margin-bottom: 10px;
+}
+
+.luxury-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #FFFFFF;
+  max-width: 600px;
+}
+.luxury-heading1{
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; /* Reduce font size if necessary */
+    font-weight: 700;
+    line-height: 2.5;
+    white-space: nowrap; /* Prevents text from wrapping */
+    max-width: 100%; /* Allow it to take full width */
+    text-align: center; /* Center align */
+    overflow: hidden;
+}
+
+/* Booking Container */
+.booking-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Image Section */
+.image-section {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.image-section img {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Booking Form */
+.booking-form {
+  background-color: #1B1B1B;
+  padding: 50px;
+  border-radius: 12px;
+  width: 550px;
+  text-align: center;
+}
+
+.booking-form h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.booking-form p {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.booking-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.guests {
+  display: flex;
+  gap: 10px;
+}
+
+.booking-form button {
+  background-color: #C6A355;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.booking-form button:hover {
+  background-color: #A98445;
+  transform: translateY(-3px);
+}
+
+.booking-form button:active {
+  transform: scale(0.95);
+}
+
+/* --------- Features Section --------- */
+.black-section {
+  background-color: #0A0A0A;
+  padding: 120px 40px;
+  position: relative;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover img {
+  transform: scale(1.05);
+}
+
+.feature-card p {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --------- Navigation Arrows --------- */
+.nav-arrows {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.nav-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------- Booking Button --------- */
+.book-btn {
+  background-color: #C6A355;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+
+.book-btn:hover {
+  background-color: #A98445;
+  transform: translateY(-3px);
+}
+
+.book-btn:active {
+  transform: scale(0.95);
+}
+
+/* --------- Responsive Design --------- */
+@media (max-width: 1024px) {
+  .booking-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-section {
+    justify-content: center;
+  }
+
+  .booking-form {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 48px;
+  }
+
+  .luxury-heading {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 36px;
+  }
+
+  .luxury-heading {
+    font-size: 28px;
+  }
+
+  .book-btn {
+    font-size: 16px;
+    padding: 10px 24px;
+  }
+}

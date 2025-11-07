@@ -1,0 +1,171 @@
+import React, { useState, useEffect } from "react";
+import BookingSteps from "./BookingSteps";
+import Tabs from "./Tabs";
+import axios from "axios";
+import "./RoomList.css";
+
+const RoomList = () => {
+  const [rooms, setRooms] = useState([]);
+  const [activeTab, setActiveTab] = useState("room-rates");
+
+  useEffect(() => {
+    fetchRooms();
+  }, []);
+
+  const fetchRooms = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/rooms");
+      setRooms(response.data);
+    } catch (error) {
+      console.error("Error fetching rooms:", error);
+    }
+  };
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve, reject) => {
+      if (window.Razorpay) {
+        console.log("Razorpay SDK already loaded");
+        resolve(true);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
+      script.onload = () => {
+        console.log("Razorpay SDK loaded successfully");
+        resolve(true);
+      };
+      script.onerror = () => {
+        console.error("Failed to load Razorpay SDK");
+        reject(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  const handleRazorpayPayment = async (amount) => {
+    try {
+      const scriptLoaded = await loadRazorpayScript();
+      if (!scriptLoaded) {
+        alert("Razorpay SDK failed to load. Please check your internet connection.");
+        return;
+      }
+
+      if (!window.Razorpay) {
+        console.error("window.Razorpay is still not available!");
+        alert("Payment gateway not available. Try again later.");
+        return;
+      }
+
+      const numericAmount = parseInt(amount.replace(/,/g, ""), 10);
+      console.log("Sending amount to backend:", numericAmount);
+
+      const response = await fetch("http://localhost:5000/api/payment/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: numericAmount }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create order");
+      }
+
+      const data = await response.json();
+      console.log("Received order data:", data);
+
+      const options = {
+        key: "rzp_test_lqs3GxHDuk6FsF",
+        amount: data.order.amount,
+        currency: "INR",
+        name: "Hotel Booking",
+        description: "Room Booking Payment",
+        order_id: data.order.id,
+        handler: async function (response) {
+          alert("Payment Successful! Order ID: " + response.razorpay_payment_id);
+
+          // Update booking count and total revenue in the backend
+          try {
+            await axios.post("http://localhost:5000/api/admin/update-stats", {
+              amount: numericAmount,
+            });
+          } catch (error) {
+            console.error("Failed to update booking stats:", error);
+          }
+        },
+        prefill: {
+          name: "Guest User",
+          email: "guest@example.com",
+          contact: "9999999999",
+        },
+        theme: { color: "#3399cc" },
+      };
+
+      console.log("Initializing Razorpay instance...");
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error("Payment failed:", error);
+    }
+  };
+
+  return (
+    <>
+      <BookingSteps />
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+
+      <div className="room-list">
+        <h2 className="search-title">Rooms for your search</h2>
+        <div className="room-cards-container">
+          {rooms.map((room, index) => (
+            <div key={index} className="room-card">
+              <div className="room-left">
+                <div className="room-image-container">
+                  <img src={room.images.length > 0 ? room.images[0] : "default-room.jpg"} alt="Room" className="room-image" />
+                </div>
+                <div className="room-details">
+                  <p>{room.size} • {room.capacity} • {room.bedType}</p>
+                  <a href="#" className="room-details-link">ROOM DETAILS</a>
+                </div>
+              </div>
+
+              <div className="room-right">
+                <h3 className="room-title">{room.name}</h3>
+                {room.warning && <p className="room-warning">⚠ {room.warning}</p>}
+
+                {room.pricing.map((option, idx) => (
+                  <div key={idx} className="pricing-box">
+                    <h4 className="pricing-title">{option.type}</h4>
+                    <ul className="pricing-details">
+                      {option.details.map((detail, i) => (
+                        <li key={i}>♦ {detail}</li>
+                      ))}
+                    </ul>
+
+                    <div className="price-options">
+                      <div className="member-price">
+                        <p>MEMBER RATE</p>
+                        <h2>₹ {option.memberPrice}</h2>
+                      </div>
+                      <div className="standard-price">
+                        <p>STANDARD RATE</p>
+                        <h2>₹ {option.standardPrice}</h2>
+                        <button className="select-btn"
+                          onClick={() => handleRazorpayPayment(option.memberPrice)}
+                        >
+                          SELECT
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default RoomList;

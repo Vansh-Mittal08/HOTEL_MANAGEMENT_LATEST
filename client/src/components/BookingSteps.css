@@ -1,0 +1,70 @@
+.booking-steps {
+    text-align: center;
+    font-family: "Georgia", serif;
+    margin-bottom: 40px; /* Increase bottom margin */
+    margin-top: 80px; /* Increase top margin */
+    padding: 40px 0; /* Increase vertical padding */
+    background-color: #ffffff;
+    border-radius: 8px; 
+  }
+  
+  .booking-title {
+    font-size: 42px; /* Increase font size */
+    font-weight: normal; /* Remove bold */
+    font-family: "Playfair Display", serif; /* Use elegant serif font */
+    color: #3e3327;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+  }
+  .booking-title::before,
+.booking-title::after {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background-color: #3d2e1e;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+  .steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .step-number {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #b68b2f;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
+  }
+  
+  .active .step-number {
+    background-color: #b68b2f;
+    color: white;
+  }
+  
+  .active .step-text {
+    font-weight: bold;
+  }
+  .separator-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1); /* Light transparent line */
+    margin: 10px auto; /* Space it properly */
+  }
